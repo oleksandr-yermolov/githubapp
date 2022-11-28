@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GitHubApp</string>
+    <string name="show_repos">Show Repos</string>
+    <string name="repositories">Repositories:</string>
+    <string name="public_repos_count">%1$d public repos</string>
+    <string name="followers_and_following_count">%1$d followers - %2$d following</string>
+</resources>

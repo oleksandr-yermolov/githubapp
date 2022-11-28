@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="never"
+    tools:context=".ui.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/spacing_small">
+
+        <EditText
+            android:id="@+id/searchField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_search"
+            android:inputType="text"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/loadRepositoriesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/show_repos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchField" />
+
+        <ImageView
+            android:id="@+id/userAvatar"
+            android:layout_width="@dimen/user_avatar_size"
+            android:layout_height="@dimen/user_avatar_size"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loadRepositoriesButton" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/userAvatar"
+            app:layout_constraintTop_toTopOf="@id/userAvatar" />
+
+        <TextView
+            android:id="@+id/userLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/userName"
+            app:layout_constraintTop_toBottomOf="@id/userName" />
+
+        <TextView
+            android:id="@+id/userPublicRepos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/spacing_xsmall"
+            app:drawableStartCompat="@drawable/ic_repository"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/userName"
+            app:layout_constraintTop_toBottomOf="@id/userLogin" />
+
+        <TextView
+            android:id="@+id/userFollowersAndFollowing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/spacing_xsmall"
+            app:drawableStartCompat="@drawable/ic_followers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/userName"
+            app:layout_constraintTop_toBottomOf="@id/userPublicRepos" />
+
+        <TextView
+            android:id="@+id/userCompany"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/spacing_xsmall"
+            android:visibility="gone"
+            app:drawableStartCompat="@drawable/ic_company"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/userName"
+            app:layout_constraintTop_toBottomOf="@id/userFollowersAndFollowing" />
+
+        <TextView
+            android:id="@+id/userLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/spacing_xsmall"
+            android:visibility="gone"
+            app:drawableStartCompat="@drawable/ic_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/userName"
+            app:layout_constraintTop_toBottomOf="@id/userCompany" />
+
+        <TextView
+            android:id="@+id/userBio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/spacing_xsmall"
+            android:visibility="gone"
+            app:drawableStartCompat="@drawable/ic_bio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/userName"
+            app:layout_constraintTop_toBottomOf="@id/userLocation" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/userGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="userLogin, userName, userAvatar, userCompany, userLocation, userPublicRepos, userFollowersAndFollowing"
+            app:layout_constraintStart_toStartOf="@id/userName"
+            app:layout_constraintTop_toBottomOf="@id/userBio" />
+
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/userBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="userLogin, userName, userAvatar, userCompany, userLocation, userPublicRepos, userFollowersAndFollowing"
+            app:layout_constraintStart_toStartOf="@id/userName"
+            app:layout_constraintTop_toBottomOf="@id/userBio" />
+
+        <TextView
+            android:id="@+id/repositories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:text="@string/repositories"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userBarrier" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/repositoriesRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/repositories" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
